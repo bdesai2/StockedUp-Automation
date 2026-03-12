@@ -1,0 +1,15 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+*.user
+
+# Never commit your API keys
+appsettings.json
+
+# Keep the example so others know what to fill in
+!appsettings.example.json
+
+# Logs and output PDFs
+*.log
+*.pdf
