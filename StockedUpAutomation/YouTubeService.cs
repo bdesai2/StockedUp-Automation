@@ -16,30 +16,30 @@ public record VideoInfo(string VideoId, string Title, string PublishedAt);
 /// which uses the youtube-transcript-api library — the most reliable 
 /// solution available for this purpose.
 /// </summary>
-public class YouTubeService
+public class YouTubeService : IDisposable
 {
     private readonly YouTubeSettings _settings;
     private readonly ILogger<YouTubeService> _logger;
     private readonly PythonSettings _python;
+    private readonly Google.Apis.YouTube.v3.YouTubeService _youtubeService;
 
     public YouTubeService(YouTubeSettings settings, PythonSettings python, ILogger<YouTubeService> logger)
     {
         _settings = settings;
         _logger = logger;
         _python = python;
+        _youtubeService = new Google.Apis.YouTube.v3.YouTubeService(new BaseClientService.Initializer
+        {
+            ApiKey = _settings.ApiKey,
+            ApplicationName = "StockedUpAutomation"
+        });
     }
 
     // ── Step 2: Get latest video ─────────────────────────────────────────────
 
     public async Task<VideoInfo> GetLatestVideoAsync()
     {
-        var youtubeService = new Google.Apis.YouTube.v3.YouTubeService(new BaseClientService.Initializer
-        {
-            ApiKey = _settings.ApiKey,
-            ApplicationName = "StockedUpAutomation"
-        });
-
-        var searchRequest = youtubeService.Search.List("snippet");
+        var searchRequest = _youtubeService.Search.List("snippet");
         searchRequest.ChannelId = _settings.ChannelId;
         searchRequest.Order = SearchResource.ListRequest.OrderEnum.Date;
         searchRequest.MaxResults = 1;
@@ -104,5 +104,10 @@ public class YouTubeService
         var transcript = stdout.Trim();
         _logger.LogInformation("Transcript fetched: {CharCount} characters", transcript.Length);
         return transcript;
+    }
+
+    public void Dispose()
+    {
+        _youtubeService?.Dispose();
     }
 }

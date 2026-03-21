@@ -19,27 +19,37 @@ public class EmailService
         _logger   = logger;
     }
 
-    /// <summary>
-    /// Sends the report PDF to the configured recipient email address.
-    /// </summary>
-    public async Task SendReportAsync(string pdfPath, string videoTitle)
+    public async Task SendReportAsync(string pdfPath, string dashboardPath, string videoTitle)
     {
         var today   = DateTime.Today.ToString("MMMM dd, yyyy");
         var subject = $"📈 Stocked Up Market Report — {today}";
+        var dashFileUri = new Uri(dashboardPath).AbsoluteUri;
 
         var bodyHtml = $"""
             <html>
-            <body style="font-family: Arial, sans-serif; color: #333; max-width: 600px;">
-              <div style="background-color: #1A3C5E; padding: 16px; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 20px;">Stocked Up</h1>
-                <p style="color: #EAF0F7; margin: 4px 0 0 0; font-size: 13px;">Daily Market Analyst Report</p>
+            <body style="font-family: Arial, sans-serif; color: #333; max-width: 620px; margin: 0 auto;">
+              <div style="background-color: #1A3C5E; padding: 20px 24px; border-radius: 8px 8px 0 0;">
+                <h1 style="color: white; margin: 0; font-size: 20px;">📈 Stocked Up</h1>
+                <p style="color: #9bb8d4; margin: 4px 0 0; font-size: 13px;">Daily Market Analyst Report</p>
               </div>
-              <div style="padding: 20px;">
-                <p><strong>Date:</strong> {today}</p>
-                <p><strong>Source Video:</strong> {videoTitle}</p>
-                <p>Your automated daily analyst report is attached as a PDF.</p>
-                <p><strong>This report covers:</strong></p>
-                <ul>
+              <div style="background: white; border: 1px solid #e2e8f0; border-top: none; padding: 24px; border-radius: 0 0 8px 8px;">
+                <p style="margin: 0 0 6px;"><strong>Date:</strong> {today}</p>
+                <p style="margin: 0 0 18px;"><strong>Source:</strong> {videoTitle}</p>
+
+                <a href="{dashFileUri}"
+                   style="display:inline-block;background:#1A3C5E;color:white;padding:10px 22px;
+                          border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;margin-bottom:18px;">
+                  Open Trading Dashboard →
+                </a>
+
+                <p style="font-size:13px;color:#888;margin:0 0 16px;">
+                  (Link opens your local dashboard file. The PDF report is also attached below.)
+                </p>
+
+                <hr style="border:none;border-top:1px solid #f0f0f0;margin:16px 0"/>
+
+                <p style="margin: 0 0 8px; font-size: 13px;"><strong>Today's report covers:</strong></p>
+                <ul style="font-size: 13px; color: #555; padding-left: 18px; margin: 0 0 16px;">
                   <li>Market Events &amp; Macro Overview</li>
                   <li>Market Sentiment</li>
                   <li>SPY Technical Levels</li>
@@ -48,10 +58,9 @@ public class EmailService
                   <li>Big Money Trade of the Day</li>
                   <li>Daily Summary &amp; Outlook</li>
                 </ul>
-              </div>
-              <div style="background-color: #f5f5f5; padding: 12px; text-align: center;">
-                <p style="font-size: 10px; color: #999; margin: 0;">
-                  This is an automated report for informational purposes only. Not financial advice.
+
+                <p style="font-size: 11px; color: #bbb; margin: 0;">
+                  Automated report for informational purposes only. Not financial advice.
                 </p>
               </div>
             </body>
@@ -66,6 +75,7 @@ public class EmailService
             IsBodyHtml = true,
         };
         message.To.Add(_settings.RecipientEmail);
+        message.Attachments.Add(new Attachment(pdfPath, "application/pdf"));
 
         // Attach the PDF
         var attachment = new Attachment(pdfPath, "application/pdf");

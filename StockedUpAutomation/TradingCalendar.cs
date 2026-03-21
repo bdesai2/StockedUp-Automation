@@ -6,6 +6,9 @@ namespace StockedUpAutomation;
 /// </summary>
 public static class TradingCalendar
 {
+    private static readonly Dictionary<int, HashSet<DateTime>> _holidayCache = new();
+    private static readonly object _cacheLock = new();
+
     /// <summary>
     /// Returns true if the date is a weekday and not a NYSE market holiday.
     /// </summary>
@@ -21,8 +24,25 @@ public static class TradingCalendar
 
     private static bool IsMarketHoliday(DateTime date)
     {
-        var holidays = GetNyseHolidays(date.Year);
-        return holidays.Any(h => h.Date == date.Date);
+        var holidays = GetNyseHolidaysCached(date.Year);
+        return holidays.Contains(date.Date);
+    }
+
+    private static HashSet<DateTime> GetNyseHolidaysCached(int year)
+    {
+        if (_holidayCache.TryGetValue(year, out var cached))
+            return cached;
+
+        lock (_cacheLock)
+        {
+            if (_holidayCache.TryGetValue(year, out cached))
+                return cached;
+
+            var holidays = GetNyseHolidays(year);
+            var hashSet = new HashSet<DateTime>(holidays.Select(h => h.Date));
+            _holidayCache[year] = hashSet;
+            return hashSet;
+        }
     }
 
     /// <summary>
