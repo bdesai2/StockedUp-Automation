@@ -50,11 +50,12 @@ logger.LogInformation("═══════════════════
 try
 {
     // ── STEP 1: Trading day check ─────────────────────────────────────────────
-    var today = DateTime.Today.AddDays(1); //Check tomorrow's date to ensure report is ready by market open
+    var today = DateTime.Today; //Check tomorrow's date to ensure report is ready by market open
     logger.LogInformation("Today is: {Date}", today.ToString("dddd, MMMM dd, yyyy"));
 
-    if (!TradingCalendar.IsTradingDay(today))
+    if (!TradingCalendar.IsTradingDay(today.AddDays(1)))
     {
+        //Check if tomorrow is a trading day, if not, exit without error or report generation
         logger.LogInformation("Not a trading day. Exiting — no report generated.");
         return 0;
     }

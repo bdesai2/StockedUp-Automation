@@ -21,7 +21,7 @@ public class ReportGeneratorService
 
         Use plain text only — no markdown, no asterisks, no pound signs, no dashes as bullets.
         Use the word BULLET on its own line to indicate a bullet point item.
-        Use the word TICKER_WATCH followed by comma-separated tickers to flag related stocks.
+        Use the word TICKER_WATCH followed by comma-separated tickers to flag related stocks. Color the tickers green for bullish and red for bearish.
 
         ---
 
@@ -36,7 +36,7 @@ public class ReportGeneratorService
         BULLET [one concise bullet — key fact or data point]
         BULLET [one concise bullet — key fact or data point]
         BULLET [one concise bullet — key fact or data point]
-        TICKER_WATCH [TICK1, TICK2]
+        TICKER_WATCH TICK1:bullish, TICK2:bearish (use :bullish for green, :bearish for red, :neutral for blue)
 
         Limit each topic to 2-4 bullets. Topics might include: geopolitical events, oil prices,
         Fed/inflation data, earnings, strategic reserve releases, supply chain, etc.
@@ -71,7 +71,7 @@ public class ReportGeneratorService
         MOMENTUM_ROW: [TICKER] | [Company] | [Bullish/Bearish] | [breakout level] | [brief note]
         
         SECTION 6: BIG MONEY TRADE
-        TICKER: [symbol]
+        TICKER: [symbol:bullish] (use :bullish for green, :bearish for red, :neutral for blue)
         COMPANY: [full name]
         TRADE TYPE: [e.g. Call Debit Spread]
         STRUCTURE: [strikes and expiration]

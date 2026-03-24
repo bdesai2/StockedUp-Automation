@@ -183,15 +183,31 @@ public class PdfBuilderService
                         });
                     }
 
-                    // Tickers to watch
-                    if (topic.Tickers.Count > 0)
+                    // Tickers to watch with sentiment coloring
+                    if (topic.TickersWithSentiment.Count > 0)
                     {
                         tc.Item().PaddingTop(2).Row(r =>
                         {
                             r.ConstantItem(80).Text("Watch:")
                              .FontSize(9).Bold().FontColor(MidGray);
-                            r.RelativeItem().Text(string.Join("  ", topic.Tickers))
-                             .FontSize(9).Bold().FontColor(Blue);
+                            r.RelativeItem().Text(txt =>
+                            {
+                                bool first = true;
+                                foreach (var (ticker, sentiment) in topic.TickersWithSentiment)
+                                {
+                                    if (!first)
+                                    {
+                                        txt.Span("  ").FontSize(9);
+                                    }
+                                    first = false;
+
+                                    var color = sentiment.Contains("bull") ? BullGreen
+                                              : sentiment.Contains("bear") ? BearRed
+                                              : Blue;
+
+                                    txt.Span(ticker).FontSize(9).Bold().FontColor(color);
+                                }
+                            });
                         });
                     }
 
@@ -327,7 +343,7 @@ public class PdfBuilderService
                            r.RelativeItem().Text(
                                $"{setup.GetValueOrDefault("TICKER", "")}  —  " +
                                $"{setup.GetValueOrDefault("COMPANY", "")}")
-                            .FontSize(11).Bold().FontColor(Navy);
+                            .FontSize(11).Bold().FontColor(dirColor);
                            r.ConstantItem(70).AlignRight()
                             .Text(dir).FontSize(9).Bold().FontColor(dirColor);
                        });
@@ -414,7 +430,7 @@ public class PdfBuilderService
                 var bg = i % 2 == 0 ? Colors.White.ToString() : TableAlt;
                 var dirColor = dir.ToLower().Contains("bull") ? BullGreen : BearRed;
 
-                table.Cell().Background(bg).Padding(5).Text(ticker).FontSize(9).Bold().FontColor(Navy);
+                table.Cell().Background(bg).Padding(5).Text(ticker).FontSize(9).Bold().FontColor(dirColor);
                 table.Cell().Background(bg).Padding(5).Text(company).FontSize(9);
                 table.Cell().Background(bg).Padding(5).Text(dir).FontSize(9).Bold().FontColor(dirColor);
                 table.Cell().Background(bg).Padding(5).Text(level).FontSize(9).Bold();
@@ -443,9 +459,12 @@ public class PdfBuilderService
             // Ticker + company header
             col.Item().Row(r =>
             {
+                var ticker = d.GetValueOrDefault("TICKER", "");
+                var dirColor = ticker.Split(":")[1].ToLower().Contains("bull") ? BullGreen
+                             : ticker.Split(":")[1].ToLower().Contains("bear") ? BearRed : Navy;
+
                 r.RelativeItem().Text(
-                    $"{d.GetValueOrDefault("TICKER", "")}  —  {d.GetValueOrDefault("COMPANY", "")}")
-                 .FontSize(12).Bold().FontColor(Navy);
+                    $"{ticker.Split(":")[0]}  —  {d.GetValueOrDefault("COMPANY", "")}").FontSize(12).Bold().FontColor(dirColor);
                 r.ConstantItem(100).AlignRight()
                  .Text(d.GetValueOrDefault("TRADE TYPE", ""))
                  .FontSize(9).Bold().FontColor(Blue);
@@ -575,9 +594,25 @@ public class PdfBuilderService
 
             if (t.StartsWith("TICKER_WATCH", StringComparison.OrdinalIgnoreCase))
             {
-                var tickers = t["TICKER_WATCH".Length..].Trim()
-                    .Split(',').Select(s => s.Trim()).Where(s => s.Length > 0);
-                current.Tickers.AddRange(tickers);
+                var tickerText = t["TICKER_WATCH".Length..].Trim();
+                var tickerParts = tickerText.Split(',').Select(s => s.Trim()).Where(s => s.Length > 0);
+                
+                foreach (var part in tickerParts)
+                {
+                    // Parse format: "AAPL:bullish" or "NVDA:bearish" or just "AAPL"
+                    var colonIndex = part.IndexOf(':');
+                    if (colonIndex > 0)
+                    {
+                        var ticker = part[..colonIndex].Trim();
+                        var sentiment = part[(colonIndex + 1)..].Trim().ToLower();
+                        current.TickersWithSentiment.Add((ticker, sentiment));
+                    }
+                    else
+                    {
+                        // Default to neutral if no sentiment specified
+                        current.TickersWithSentiment.Add((part, "neutral"));
+                    }
+                }
             }
         }
                 // Regular body text
@@ -665,5 +700,6 @@ public class PdfBuilderService
     {
         public List<string> Bullets { get; } = new();
         public List<string> Tickers { get; } = new();
+        public List<(string Ticker, string Sentiment)> TickersWithSentiment { get; } = new();
     }
 }
