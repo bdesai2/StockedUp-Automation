@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang='en'><head><meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Stocked Up Dashboard — 2026-03-27</title>
+
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f5f7;color:#1a1a2e;font-size:14px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:#1A3C5E;color:white;position:sticky;top:0;z-index:100}
+  .logo{font-size:16px;font-weight:600;margin-right:16px}
+  .topbar-date{font-size:13px;opacity:.8}
+  .topbar-right{display:flex;align-items:center;gap:10px}
+  .back-btn{color:white;text-decoration:none;font-size:13px;opacity:.8;border:1px solid rgba(255,255,255,.3);padding:4px 12px;border-radius:6px}
+  .back-btn:hover{opacity:1;background:rgba(255,255,255,.1)}
+  .video-title{background:#EAF0F7;color:#2E5F8A;padding:8px 24px;font-size:12px;border-bottom:1px solid #d0dce9}
+  .content{max-width:1400px;margin:0 auto;padding:20px 24px}
+  .section-label{font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.08em;margin:24px 0 10px}
+  .chart-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:14px;margin-bottom:8px}
+  .chart-card{background:white;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;margin-bottom:4px}
+  .full-width{width:100%}
+  .chart-header{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #f0f0f0}
+  .chart-title-block{display:flex;flex-direction:column;gap:2px}
+  .chart-ticker{font-size:15px;font-weight:600;color:#1A3C5E}
+  .chart-company{font-size:12px;color:#888}
+  .chart-actions{display:flex;align-items:center;gap:8px}
+  .tv-btn{font-size:12px;padding:5px 12px;border-radius:6px;border:1px solid #d0dce9;background:white;color:#2E5F8A;text-decoration:none;font-weight:500}
+  .tv-btn:hover{background:#EAF0F7}
+  .tv-embed-wrapper{width:100%;background:#fafafa}
+  .tv-embed-wrapper iframe{display:block}
+  .chart-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid #f0f0f0;flex-wrap:wrap;gap:6px}
+  .level-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .level-tag{font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500}
+  .lt-r{background:#FCEBEB;color:#A32D2D}
+  .lt-s{background:#EAF3DE;color:#3B6D11}
+  .lt-t{background:#E6F1FB;color:#185FA5}
+  .timestamp{font-size:11px;color:#aaa;white-space:nowrap}
+  .thesis-bar{padding:8px 16px;background:#fafafa;font-size:12px;color:#555;border-top:1px solid #f5f5f5}
+  .badge{font-size:11px;padding:4px 10px;border-radius:20px;font-weight:500}
+  .badge.bull{background:#EAF3DE;color:#3B6D11}
+  .badge.bear{background:#FCEBEB;color:#A32D2D}
+  .badge.neutral{background:#E6F1FB;color:#185FA5}
+  .bm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#f0f0f0;border-top:1px solid #f0f0f0}
+  .bm-stat{background:white;padding:10px 16px}
+  .bm-label{font-size:11px;color:#888;margin-bottom:2px}
+  .bm-val{font-size:14px;font-weight:600;color:#1A3C5E}
+  .disclaimer{text-align:center;font-size:11px;color:#aaa;padding:24px;margin-top:8px}
+  @media(max-width:600px){.chart-grid{grid-template-columns:1fr}.bm-stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+<style>
+  .content-wrap{max-width:1400px;margin:0 auto;padding:20px 24px}
+  .section-label,.chart-grid,.chart-card,.full-width,.bm-stats,.disclaimer,.video-title{margin-left:auto;margin-right:auto;max-width:1400px;padding-left:24px;padding-right:24px}
+  .chart-grid,.chart-card,.full-width{padding-left:0;padding-right:0}
+  body>*:not(.topbar):not(.video-title):not(.disclaimer){padding-left:24px;padding-right:24px;max-width:1448px;margin-left:auto;margin-right:auto;box-sizing:border-box}
+</style>
+</head><body>
+
+<div class='topbar'>
+  <div class='topbar-left'>
+    <span class='logo'>📈 Stocked Up</span>
+    <span class='topbar-date'>Friday, March 27, 2026 · Generated 9:07 AM CST</span>
+  </div>
+  <div class='topbar-right'>
+    <span class='badge bear'>Sentiment: Bearish and Deteriorating</span>
+    <a href='../index.html' class='back-btn'>← All Reports</a>
+  </div>
+</div>
+<div class='video-title'>Source: Tomorrow Will Be Insane</div>
+<div class='section-label'>SPY Key Levels</div>
+<div class='chart-card full-width'>
+
+<div class='chart-header'>
+  <div class='chart-title-block'>
+    <span class='chart-ticker'>SPY</span>
+    <span class='chart-company'>S&amp;P 500 ETF · Daily</span>
+  </div>
+  <div class='chart-actions'>
+    <span class='badge neutral'>Neutral</span>
+    <a href='https://www.tradingview.com/chart/?symbol=SPY' target='_blank' class='tv-btn'>Open in TradingView ↗</a>
+  </div>
+</div>
+
+<div class='tv-embed-wrapper'>
+  <iframe
+    src='https://www.tradingview.com/widgetbar-chart-only/?symbol=SPY&interval=D&theme=light&style=1&locale=en&toolbar_bg=%23f1f3f6&hide_top_toolbar=false&save_image=false&studies=[]'
+    width='100%'
+    height='340'
+    frameborder='0'
+    allowtransparency='true'
+    scrolling='no'>
+  </iframe>
+</div>
+
+<div class='chart-footer'>
+  <div class='level-tags'><span class='level-tag lt-r'>LEVEL_ROW: 655: 655</span><span class='level-tag lt-r'>LEVEL_ROW: 650 to 653: 650</span><span class='level-tag lt-t'>LEVEL_ROW: 647: 647</span><span class='level-tag lt-s'>LEVEL_ROW: 642 to 641: 642</span><span class='level-tag lt-s'>LEVEL_ROW: 613 to 615: 613</span></div>
+  <span class='timestamp'>Identified 9:07 AM CST · 2026-03-27</span>
+</div>
+</div>
+<div class='section-label'>Featured Setups</div>
+<div class='chart-grid'>
+<div class='chart-card'>
+
+<div class='chart-header'>
+  <div class='chart-title-block'>
+    <span class='chart-ticker'>PFE</span>
+    <span class='chart-company'>Pfizer Inc · Daily</span>
+  </div>
+  <div class='chart-actions'>
+    <span class='badge bull'>Bullish</span>
+    <a href='https://www.tradingview.com/chart/?symbol=PFE' target='_blank' class='tv-btn'>Open in TradingView ↗</a>
+  </div>
+</div>
+
+<div class='tv-embed-wrapper'>
+  <iframe
+    src='https://www.tradingview.com/widgetbar-chart-only/?symbol=PFE&interval=D&theme=light&style=1&locale=en&toolbar_bg=%23f1f3f6&hide_top_toolbar=false&save_image=false&studies=[]'
+    width='100%'
+    height='340'
+    frameborder='0'
+    allowtransparency='true'
+    scrolling='no'>
+  </iframe>
+</div>
+
+<div class='chart-footer'>
+  <div class='level-tags'>
+    <span class='level-tag lt-t'>Above 27.75 to 27.80 for initial entry | 28.00 confirmed breakout target | Stop below 26.50 support</span>
+    <span class='level-tag lt-s'>Healthcare stocks tend to trade independently of SPY correla…</span>
+  </div>
+  <span class='timestamp'>9:07 AM CST · 2026-03-27</span>
+</div>
+<div class='thesis-bar'>Pfizer has been holding above the 26.50 support level while showing relative strength against a weak market, and a confi…</div>
+</div>
+<div class='chart-card'>
+
+<div class='chart-header'>
+  <div class='chart-title-block'>
+    <span class='chart-ticker'>AXSM</span>
+    <span class='chart-company'>Axsome Therapeutics · Daily</span>
+  </div>
+  <div class='chart-actions'>
+    <span class='badge bull'>Bullish</span>
+    <a href='https://www.tradingview.com/chart/?symbol=AXSM' target='_blank' class='tv-btn'>Open in TradingView ↗</a>
+  </div>
+</div>
+
+<div class='tv-embed-wrapper'>
+  <iframe
+    src='https://www.tradingview.com/widgetbar-chart-only/?symbol=AXSM&interval=D&theme=light&style=1&locale=en&toolbar_bg=%23f1f3f6&hide_top_toolbar=false&save_image=false&studies=[]'
+    width='100%'
+    height='340'
+    frameborder='0'
+    allowtransparency='true'
+    scrolling='no'>
+  </iframe>
+</div>
+
+<div class='chart-footer'>
+  <div class='level-tags'>
+    <span class='level-tag lt-t'>Above 152.50 support bounce area | Target 170 plus | Stop below 152.50</span>
+    <span class='level-tag lt-s'>Big money entered this trade on March 12th making the curren…</span>
+  </div>
+  <span class='timestamp'>9:07 AM CST · 2026-03-27</span>
+</div>
+<div class='thesis-bar'>AXSM is confirming price action after a recent 300,000 dollar big money call debit spread at the 170 strike for May 15th…</div>
+</div>
+<div class='chart-card'>
+
+<div class='chart-header'>
+  <div class='chart-title-block'>
+    <span class='chart-ticker'>ADBE</span>
+    <span class='chart-company'>Adobe Inc · Daily</span>
+  </div>
+  <div class='chart-actions'>
+    <span class='badge bull'>Bullish</span>
+    <a href='https://www.tradingview.com/chart/?symbol=ADBE' target='_blank' class='tv-btn'>Open in TradingView ↗</a>
+  </div>
+</div>
+
+<div class='tv-embed-wrapper'>
+  <iframe
+    src='https://www.tradingview.com/widgetbar-chart-only/?symbol=ADBE&interval=D&theme=light&style=1&locale=en&toolbar_bg=%23f1f3f6&hide_top_toolbar=false&save_image=false&studies=[]'
+    width='100%'
+    height='340'
+    frameborder='0'
+    allowtransparency='true'
+    scrolling='no'>
+  </iframe>
+</div>
+
+<div class='chart-footer'>
+  <div class='level-tags'>
+    <span class='level-tag lt-t'>Above today&#39;s high | Target 246 gap fill | Stop below 237.50 to 238</span>
+    <span class='level-tag lt-s'>This is a short-term day trade setup only with an estimated …</span>
+  </div>
+  <span class='timestamp'>9:07 AM CST · 2026-03-27</span>
+</div>
+<div class='thesis-bar'>Adobe gapped down in pre-market but recovered significantly intraday, showing short-term support holding near the 237.50…</div>
+</div>
+</div>
+<div class='section-label'>Momentum Plays</div>
+<div class='chart-grid'>
+<div class='chart-card'>
+
+<div class='chart-header'>
+  <div class='chart-title-block'>
+    <span class='chart-ticker'>MOMENTUM_ROW: WDC</span>
+    <span class='chart-company'>Western Digital · Daily</span>
+  </div>
+  <div class='chart-actions'>
+    <span class='badge bear'>Bearish</span>
+    <a href='https://www.tradingview.com/chart/?symbol=MOMENTUM_ROW%3A%20WDC' target='_blank' class='tv-btn'>Open in TradingView ↗</a>
+  </div>
+</div>
+
+<div class='tv-embed-wrapper'>
+  <iframe
+    src='https://www.tradingview.com/widgetbar-chart-only/?symbol=MOMENTUM_ROW%3A%20WDC&interval=D&theme=light&style=1&locale=en&toolbar_bg=%23f1f3f6&hide_top_toolbar=false&save_image=false&studies=[]'
+    width='100%'
+    height='340'
+    frameborder='0'
+    allowtransparency='true'
+    scrolling='no'>
+  </iframe>
+</div>
+
+<div class='chart-footer'>
+  <div class='level-tags'>
+    <span class='level-tag lt-r'>Break: 27.20</span>
+    <span class='level-tag lt-s'>Break under 27.20 triggers downside continuation a…</span>
+  </div>
+  <span class='timestamp'>9:07 AM CST · 2026-03-27</span>
+</div>
+</div>
+<div class='chart-card'>
+
+<div class='chart-header'>
+  <div class='chart-title-block'>
+    <span class='chart-ticker'>MOMENTUM_ROW: GOOGL</span>
+    <span class='chart-company'>Alphabet · Daily</span>
+  </div>
+  <div class='chart-actions'>
+    <span class='badge bear'>Bearish</span>
+    <a href='https://www.tradingview.com/chart/?symbol=MOMENTUM_ROW%3A%20GOOGL' target='_blank' class='tv-btn'>Open in TradingView ↗</a>
+  </div>
+</div>
+
+<div class='tv-embed-wrapper'>
+  <iframe
+    src='https://www.tradingview.com/widgetbar-chart-only/?symbol=MOMENTUM_ROW%3A%20GOOGL&interval=D&theme=light&style=1&locale=en&toolbar_bg=%23f1f3f6&hide_top_toolbar=false&save_image=false&studies=[]'
+    width='100%'
+    height='340'
+    frameborder='0'
+    allowtransparency='true'
+    scrolling='no'>
+  </iframe>
+</div>
+
+<div class='chart-footer'>
+  <div class='level-tags'>
+    <span class='level-tag lt-r'>Break: 278.50</span>
+    <span class='level-tag lt-s'>Falling alongside Meta on landmark social media la…</span>
+  </div>
+  <span class='timestamp'>9:07 AM CST · 2026-03-27</span>
+</div>
+</div>
+<div class='chart-card'>
+
+<div class='chart-header'>
+  <div class='chart-title-block'>
+    <span class='chart-ticker'>MOMENTUM_ROW: ZM</span>
+    <span class='chart-company'>Zoom Communications · Daily</span>
+  </div>
+  <div class='chart-actions'>
+    <span class='badge bull'>Bullish</span>
+    <a href='https://www.tradingview.com/chart/?symbol=MOMENTUM_ROW%3A%20ZM' target='_blank' class='tv-btn'>Open in TradingView ↗</a>
+  </div>
+</div>
+
+<div class='tv-embed-wrapper'>
+  <iframe
+    src='https://www.tradingview.com/widgetbar-chart-only/?symbol=MOMENTUM_ROW%3A%20ZM&interval=D&theme=light&style=1&locale=en&toolbar_bg=%23f1f3f6&hide_top_toolbar=false&save_image=false&studies=[]'
+    width='100%'
+    height='340'
+    frameborder='0'
+    allowtransparency='true'
+    scrolling='no'>
+  </iframe>
+</div>
+
+<div class='chart-footer'>
+  <div class='level-tags'>
+    <span class='level-tag lt-t'>Break: 81.10</span>
+    <span class='level-tag lt-s'>Popped in morning session; break above 81.10 high …</span>
+  </div>
+  <span class='timestamp'>9:07 AM CST · 2026-03-27</span>
+</div>
+</div>
+</div>
+<div class='section-label'>Big Money Trade</div>
+<div class='chart-card full-width'>
+
+<div class='chart-header'>
+  <div class='chart-title-block'>
+    <span class='chart-ticker'>ADMA:bullish</span>
+    <span class='chart-company'>ADMA Biologics · Daily</span>
+  </div>
+  <div class='chart-actions'>
+    <span class='badge bull'>Bullish</span>
+    <a href='https://www.tradingview.com/chart/?symbol=ADMA%3Abullish' target='_blank' class='tv-btn'>Open in TradingView ↗</a>
+  </div>
+</div>
+
+<div class='bm-stats'>
+  <div class='bm-stat'><div class='bm-label'>Trade type</div><div class='bm-val'>Call Debit Spread</div></div>
+  <div class='bm-stat'><div class='bm-label'>Structure</div><div class='bm-val'>Long 10 strike calls, Short 15 strike calls, expiring June 18th 2026</div></div>
+  <div class='bm-stat'><div class='bm-label'>Capital at risk</div><div class='bm-val'>790,000 dollars</div></div>
+  <div class='bm-stat'><div class='bm-label'>Max profit</div><div class='bm-val'>4,200,000 dollars</div></div>
+  <div class='bm-stat'><div class='bm-label'>Risk / reward</div><div class='bm-val'>Approximately 5.3 to 1</div></div>
+  <div class='bm-stat'><div class='bm-label'>Stop loss</div><div class='bm-val'>Below the 7.00 gap fill support level on the daily chart</div></div>
+</div>
+
+<div class='tv-embed-wrapper'>
+  <iframe
+    src='https://www.tradingview.com/widgetbar-chart-only/?symbol=ADMA%3Abullish&interval=D&theme=light&style=1&locale=en&toolbar_bg=%23f1f3f6&hide_top_toolbar=false&save_image=false&studies=[]'
+    width='100%'
+    height='340'
+    frameborder='0'
+    allowtransparency='true'
+    scrolling='no'>
+  </iframe>
+</div>
+
+<div class='chart-footer'>
+  <div class='level-tags'>
+    <span class='level-tag lt-t'>ADMA experienced four to five consecutive massive red days following a short report from Culper Rese…</span>
+  </div>
+  <span class='timestamp'>9:07 AM CST · 2026-03-27</span>
+</div>
+</div>
+<div class='disclaimer'>This dashboard is for informational and educational purposes only. Not financial advice.</div>
+</body></html>

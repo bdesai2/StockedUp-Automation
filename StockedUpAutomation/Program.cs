@@ -107,12 +107,14 @@ try
     reportIndex.RebuildIndex(settings.Output.Directory);
     logger.LogInformation("✓ Index updated.");
 
-    // ── STEP 6: Send email ────────────────────────────────────────────────────
+    // ── STEP 9: Send email ────────────────────────────────────────────────────
     logger.LogInformation("Sending email...");
     await emailService.SendReportAsync(pdfPath, dashboardPath, videoInfo.Title);
     logger.LogInformation("✓ Email sent to: {Recipient}", settings.Gmail.RecipientEmail);
 
-    // ── STEP 7: Mark as exported ──────────────────────────────────────────
+    // ── STEP 10: Mark as exported ──────────────────────────────────────────
+    await trackingService.MarkAsExportedAsync(videoInfo);
+
     logger.LogInformation("Opening dashboard in browser...");
     Process.Start(new ProcessStartInfo
     {

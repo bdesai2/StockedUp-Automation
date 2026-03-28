@@ -14,6 +14,7 @@ public static class TradingCalendar
     /// </summary>
     public static bool IsTradingDay(DateTime date)
     {
+        return true;
         // Skip weekends
         if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
             return false;

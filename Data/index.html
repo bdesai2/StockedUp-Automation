@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang='en'><head><meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Stocked Up — Report Archive</title>
+
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f5f7;color:#1a1a2e;font-size:14px}
+  .header{background:#1A3C5E;padding:24px;color:white}
+  .header-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+  h1{font-size:22px;font-weight:600;margin-bottom:4px}
+  .subtitle{font-size:13px;opacity:.7}
+  .count-badge{background:rgba(255,255,255,.15);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500}
+  .container{max-width:800px;margin:24px auto;padding:0 16px}
+  .hero-card{background:white;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:20px}
+  .hero-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:6px}
+  .hero-date{font-size:20px;font-weight:600;color:#1A3C5E;margin-bottom:16px}
+  .hero-actions{display:flex;gap:10px}
+  .btn{padding:8px 20px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;display:inline-block}
+  .btn-primary{background:#1A3C5E;color:white}
+  .btn-primary:hover{background:#2E5F8A}
+  .btn-secondary{background:white;color:#1A3C5E;border:1px solid #d0dce9}
+  .btn-secondary:hover{background:#EAF0F7}
+  .archive-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 4px}
+  .archive-header span:first-child{font-size:13px;font-weight:600;color:#444}
+  .archive-hint{font-size:12px;color:#aaa}
+  .report-list{display:flex;flex-direction:column;gap:6px}
+  .report-row{background:white;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:border-color .15s}
+  .report-row:hover{border-color:#2E5F8A;background:#fafcff}
+  .report-row.today{border-color:#1A3C5E;border-width:2px}
+  .report-row-left{display:flex;align-items:center;gap:12px}
+  .day-badge{width:40px;height:40px;border-radius:8px;background:#f0f0f0;color:#666;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0}
+  .day-today{background:#1A3C5E;color:white}
+  .day-week{background:#EAF0F7;color:#2E5F8A}
+  .report-date{font-size:14px;font-weight:500;color:#1a1a2e}
+  .report-slug{font-size:12px;color:#aaa;margin-top:2px}
+  .today-pill{background:#EAF3DE;color:#3B6D11;font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500;margin-left:6px}
+  .report-row-right{display:flex;gap:6px;align-items:center}
+  .row-btn{font-size:12px;padding:5px 12px;border-radius:6px;border:1px solid #d0dce9;background:white;color:#2E5F8A;text-decoration:none;font-weight:500}
+  .row-btn:hover{background:#EAF0F7}
+  .row-btn-pdf{color:#888}
+  .missing{font-size:12px;color:#ccc}
+  .empty{text-align:center;padding:60px 20px;color:#aaa;font-size:15px}
+  .footer{text-align:center;font-size:11px;color:#aaa;padding:32px 16px}
+</style>
+</head><body>
+
+<div class='header'>
+  <div class='header-inner'>
+    <div>
+      <h1>📈 Stocked Up Report Archive</h1>
+      <p class='subtitle'>Daily market analyst reports · Updated March 27, 2026 9:07 AM</p>
+    </div>
+    <div class='count-badge'>5 reports</div>
+  </div>
+</div>
+<div class='container'>
+
+<div class='hero-card'>
+  <div class='hero-label'>Latest report</div>
+  <div class='hero-date'>Friday, March 27, 2026</div>
+  <div class='hero-actions'>
+    <a href='./2026-03-27/dashboard_2026-03-27.html' class='btn btn-primary'>View Dashboard →</a>
+    <a href='./2026-03-27/StockedUp_Report_2026-03-27.pdf' class='btn btn-secondary' download>Download PDF</a>
+  </div>
+</div>
+
+<div class='archive-header'>
+  <span>All Reports</span>
+  <span class='archive-hint'>Click a row to open the dashboard</span>
+</div>
+<div class='report-list'>
+
+<div class='report-row today' onclick="window.location='./2026-03-27/dashboard_2026-03-27.html'">
+  <div class='report-row-left'>
+    <div class='day-badge day-today'>Fri</div>
+    <div>
+      <div class='report-date'>March 27, 2026 <span class='today-pill'>Today</span></div>
+      <div class='report-slug'>2026-03-27</div>
+    </div>
+  </div>
+  <div class='report-row-right'>
+    <a href='./2026-03-27/dashboard_2026-03-27.html' class='row-btn' onclick='event.stopPropagation()'>Dashboard</a>
+    <a href='./2026-03-27/StockedUp_Report_2026-03-27.pdf' class='row-btn row-btn-pdf' download onclick='event.stopPropagation()'>PDF ↓</a>
+  </div>
+</div>
+
+<div class='report-row' onclick="window.location='./2026-03-25/dashboard_2026-03-25.html'">
+  <div class='report-row-left'>
+    <div class='day-badge day-week'>Wed</div>
+    <div>
+      <div class='report-date'>March 25, 2026</div>
+      <div class='report-slug'>2026-03-25</div>
+    </div>
+  </div>
+  <div class='report-row-right'>
+    <a href='./2026-03-25/dashboard_2026-03-25.html' class='row-btn' onclick='event.stopPropagation()'>Dashboard</a>
+    <a href='./2026-03-25/StockedUp_Report_2026-03-25.pdf' class='row-btn row-btn-pdf' download onclick='event.stopPropagation()'>PDF ↓</a>
+  </div>
+</div>
+
+<div class='report-row' onclick="window.location='./2026-03-24/dashboard_2026-03-24.html'">
+  <div class='report-row-left'>
+    <div class='day-badge day-week'>Tue</div>
+    <div>
+      <div class='report-date'>March 24, 2026</div>
+      <div class='report-slug'>2026-03-24</div>
+    </div>
+  </div>
+  <div class='report-row-right'>
+    <a href='./2026-03-24/dashboard_2026-03-24.html' class='row-btn' onclick='event.stopPropagation()'>Dashboard</a>
+    <a href='./2026-03-24/StockedUp_Report_2026-03-24.pdf' class='row-btn row-btn-pdf' download onclick='event.stopPropagation()'>PDF ↓</a>
+  </div>
+</div>
+
+<div class='report-row' onclick="window.location='./2026-03-23/dashboard_2026-03-23.html'">
+  <div class='report-row-left'>
+    <div class='day-badge day-week'>Mon</div>
+    <div>
+      <div class='report-date'>March 23, 2026</div>
+      <div class='report-slug'>2026-03-23</div>
+    </div>
+  </div>
+  <div class='report-row-right'>
+    <a href='./2026-03-23/dashboard_2026-03-23.html' class='row-btn' onclick='event.stopPropagation()'>Dashboard</a>
+    <a href='./2026-03-23/StockedUp_Report_2026-03-23.pdf' class='row-btn row-btn-pdf' download onclick='event.stopPropagation()'>PDF ↓</a>
+  </div>
+</div>
+
+<div class='report-row' onclick="window.location='./2026-03-20/dashboard_2026-03-20.html'">
+  <div class='report-row-left'>
+    <div class='day-badge'>Fri</div>
+    <div>
+      <div class='report-date'>March 20, 2026</div>
+      <div class='report-slug'>2026-03-20</div>
+    </div>
+  </div>
+  <div class='report-row-right'>
+    <a href='./2026-03-20/dashboard_2026-03-20.html' class='row-btn' onclick='event.stopPropagation()'>Dashboard</a>
+    <a href='./2026-03-20/StockedUp_Report_2026-03-20.pdf' class='row-btn row-btn-pdf' download onclick='event.stopPropagation()'>PDF ↓</a>
+  </div>
+</div>
+</div>
+</div>
+<div class='footer'>Stocked Up Automation · Reports are for informational purposes only · Not financial advice</div>
+</body></html>
